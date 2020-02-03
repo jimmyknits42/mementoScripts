@@ -31,7 +31,7 @@
 function getDurationString(entry) {
   var ret = "";
 
-  if (entry.field("All Time") == true) {
+  if (false/*entry.field("All Time")*/) {
     ret = "(All Time)";
   }
   else {
