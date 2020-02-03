@@ -24,29 +24,31 @@
  * If no start moment is specified, it will be "???"
  * If no end moment is specified, it will be "Now"
  *
+ * @param {object} entry - entry to calculate duration string for
+ *
  * @returns {string}
  */
-function getDurationString() {
+function getDurationString(entry) {
   var ret = "";
 
-  if (field("All Time")) {
+  if (entry.field("All Time")) {
     ret = "(All Time)";
   }
   else {
     //construct start date
     var start = "";
-    var aoDate = field("As Of Date");
-    var aoDateUnc = field("As Of Date Uncertainty");
+    var aoDate = entry.field("As Of Date");
+    var aoDateUnc = entry.field("As Of Date Uncertainty");
     if (aoDate != null) { 
       start = moment(aoDate).format("YYYY-MM-DD") + getNumericUncertaintyString(aoDateUnc);
     }
     else {
-      var aoYear = field("As Of Year");
-      var aoYearUnc = field("As Of Year Uncertainty");
-      var aoMonth = field("As Of Month");
-      var aoMonthUnc = field("As Of Month Uncertainty");
-      var aoDay = field("As Of Day");
-      var aoDayUnc = field("As Of Day Uncertainty");
+      var aoYear = entry.field("As Of Year");
+      var aoYearUnc = entry.field("As Of Year Uncertainty");
+      var aoMonth = entry.field("As Of Month");
+      var aoMonthUnc = entry.field("As Of Month Uncertainty");
+      var aoDay = entry.field("As Of Day");
+      var aoDayUnc = entry.field("As Of Day Uncertainty");
       if (aoYear > 0) {
         start = aoYear + getNumericUncertaintyString(aoYearUnc);
       }
@@ -68,18 +70,18 @@ function getDurationString() {
     }
     //construct end date
     var end = "";
-    var uDate = field("Until Date");
-    var uDateUnc = field("Until Date Uncertainty");
+    var uDate = entry.field("Until Date");
+    var uDateUnc = entry.field("Until Date Uncertainty");
     if (uDate != null) {
       end = moment(uDate).format("YYYY-MM-DD") + getNumericUncertaintyString(uDateUnc);
     }
     else {
-      var uYear = field("Until Year");
-      var uYearUnc = field("Until Year Uncertainty");
-      var uMonth = field("Until Month");
-      var uMonthUnc = field("Until Month Uncertainty");
-      var uDay = field("Until Day");
-      var uDayUnc = field("Until Day Uncertainty");
+      var uYear = entry.field("Until Year");
+      var uYearUnc = entry.field("Until Year Uncertainty");
+      var uMonth = entry.field("Until Month");
+      var uMonthUnc = entry.field("Until Month Uncertainty");
+      var uDay = entry.field("Until Day");
+      var uDayUnc = entry.field("Until Day Uncertainty");
       if (uYear > 0) {
         end = uYear + getNumericUncertaintyString(uYearUnc);
       }
