@@ -56,13 +56,13 @@ function getDurationString(entry) {
         if (start != "") {
           start += "-";
         }
-        start += aoMonth.toString().padStart(2, "0") + getNumericUncertaintyString(aoMonthUnc);
+        start += pad("00", aoMonth.toString(), true) + getNumericUncertaintyString(aoMonthUnc);
       }
       if (aoDay > 0) {
         if (start != "") {
           start += "-"
         }
-        start += aoDay.toString().padStart(2, "0") + getNumericUncertaintyString(aoDayUnc);
+        start += pad("00", aoDay.toString(), true) + getNumericUncertaintyString(aoDayUnc);
       }
     }
     if (start == "") {
@@ -89,13 +89,13 @@ function getDurationString(entry) {
         if (end != "") {
           end += "-";
         }
-        end += uMonth.toString().padStart(2, "0") + getNumericUncertaintyString(uMonthUnc);
+        end += pad("00", uMonth.toString(), true) + getNumericUncertaintyString(uMonthUnc);
       }
       if (uDay > 0) {
         if (end != "") {
           end += "-"
         }
-        end += uDay.toString().padStart(2, "0") + getNumericUncertaintyString(uDayUnc);
+        end += pad("00", uDay.toString(), true) + getNumericUncertaintyString(uDayUnc);
       }
     }
     if (end == "") {
