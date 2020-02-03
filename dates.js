@@ -40,7 +40,7 @@ function getDurationString(entry) {
     var aoDate = entry.field("As Of Date");
     var aoDateUnc = entry.field("As Of Date Uncertainty");
     if (aoDate != null && aoDate != undefined) { 
-      start = moment(aoDate).format("YYYY-MM-DD") + getNumericUncertaintyString(aoDateUnc);
+      start = "Using As Of Date"/*moment(aoDate).format("YYYY-MM-DD") + getNumericUncertaintyString(aoDateUnc)*/;
     }
     else {
       var aoYear = entry.field("As Of Year");
