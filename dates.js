@@ -39,7 +39,7 @@ function getDurationString(entry) {
     var start = "";
     var aoDate = entry.field("As Of Date");
     var aoDateUnc = entry.field("As Of Date Uncertainty");
-    if (aoDate != null) { 
+    if (aoDate != null && aoDate != undefined) { 
       start = moment(aoDate).format("YYYY-MM-DD") + getNumericUncertaintyString(aoDateUnc);
     }
     else {
@@ -72,7 +72,7 @@ function getDurationString(entry) {
     var end = "";
     var uDate = entry.field("Until Date");
     var uDateUnc = entry.field("Until Date Uncertainty");
-    if (uDate != null) {
+    if (uDate != null && uDate != undefined) {
       end = moment(uDate).format("YYYY-MM-DD") + getNumericUncertaintyString(uDateUnc);
     }
     else {
