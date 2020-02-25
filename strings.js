@@ -64,3 +64,33 @@ function getFieldValue(e, fieldName, delimiter) {
 function getDisplayID(e) {
   return getFieldValue(e, "displayID", ", ")
 }
+
+/**
+ * getMementoID
+ * Returns a string of the MementoID of the entry/entries in the e parameter
+ * If there is more than one entry in the parameter, they are comma separated
+ *
+ * @param {Array} - entry/entries to return displayID for
+ *
+ * @returns {string}
+ */
+function getMementoID(e) {
+  //initialize
+  var ret = "";
+  //exit out if invalid input
+  if (e == null || typeof e == 'undefined' || e.length == 0) {
+    return ret
+  }
+  //if there is at least one entry in the parameter, return it's MementoID
+  if (e.length > 0) {
+    ret = e[0].id;
+  }
+  //if there is more than one entry, comma separate the others
+  if (e.length > 1) {
+    for (var i = 1; i < e.length; i++) {
+      ret += ", " + e[i].id;
+    }
+  }
+  //return
+  return ret
+}
