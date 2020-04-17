@@ -21,7 +21,7 @@ function createAndLinkEntry(currentEntry) {
   var createMoment = moment().valueOf();
 
   //create temp object
-  var tempEntry = new Object();
+  var tmpEntry = new Object();
 
   //populate values
   //main
