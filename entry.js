@@ -2,6 +2,7 @@
  * createAndLinkEntry
  * Creates an entry in the Entry library with all the identifying info about the entry parameter
  * Requires the entry parameter to have the following fields
+ *  - libraryName [TX]
  *  - className [TX]
  *  - classNumber [NM]
  *  - entryNumber [NM]
@@ -22,6 +23,7 @@ function createAndLinkEntry(entry) {
 
   //construct temmp entry
   var tmpEntry = {
+    "This libraryName": entry.field("libraryName"),
     "This MementoID":  entry.id,
     "This className": entry.field("className"),
     "This classNumber": entry.field("classNumber"),
