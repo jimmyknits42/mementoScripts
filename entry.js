@@ -14,7 +14,7 @@
  * @returns {Object}
  */
 function createAndLinkEntry(currentEntry) {
-  //get Experience Details library
+  //get Entry library
   var entryLibrary = libByName("Entry");
 
   //get create moment
