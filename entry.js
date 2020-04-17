@@ -1,7 +1,7 @@
 /**
  * createAndLinkEntry
- * Creates an entry in the Entry library with all the identifying info about the currentEntry parameter
- * Requires the currentEntry to have the following fields
+ * Creates an entry in the Entry library with all the identifying info about the entry parameter
+ * Requires the entry parameter to have the following fields
  *  - className [TX]
  *  - classNumber [NM]
  *  - entryNumber [NM]
@@ -9,41 +9,38 @@
  *  - displayID [TX]
  *  - Entry [RL-S]
  *
- * @param currentEntry {Object} - entry object to create an Entry entry for and link back to
+ * @param entry {Object} - entry object to create an Entry entry for and link back to
  * 
  * @returns {Object}
  */
-function createAndLinkEntry(currentEntry) {
+function createAndLinkEntry(entry) {
   //get Entry library
   var entryLibrary = libByName("Entry");
 
   //get create moment
   var createMoment = moment().valueOf();
 
-  //create temp object
-  var tmpEntry = new Object();
-
-  //populate values
-  //main
-  tmpEntry["This MementoID"] = currentEntry.id;
-  tmpEntry["This className"] = currentEntry.field("className");
-  tmpEntry["This classNumber"] = currentEntry.field("classNumber");
-  tmpEntry["This entryNumber"] = currentEntry.field("entryNumber");
-  tmpEntry["This entryID"] = currentEntry.field("entryID");
-  tmpEntry["This displayID"] = currentEntry.field("displayID");
-  //meta
-  tmpEntry["Timestamp"] = currentEntry.field("Timestamp");
-  tmpEntry["Location"] = currentEntry.field("Location");
-  tmpDetails["EntryBeganMoment"] = createMoment;
-  tmpEntry["EntrySavedMoment"] = createMoment;
-  tmpEntry["EntryLastUpdatedMoment"] = createMoment;
-  tmpEntry["Test"] = currentEntry.field("Test");
-
+  //construct temmp entry
+  var tmpEntry = {
+    "This MementoID":  entry.id,
+    "This className": entry.field("className"),
+    "This classNumber": entry.field("classNumber"),
+    "This entryNumber": entry.field("entryNumber"),
+    "This entryID": entry.field("entryID"),
+    "This displayID": entry.field("displayID"),
+    "Timestamp": entry.field("Timestamp"),
+    "Location": entry.field("Location"),
+    "EntryBeganMoment": createMoment,
+    "EntrySavedMoment": createMoment,
+    "EntryLastUpdatedMoment": createMoment,
+    "Test": entry.field("Test"),
+  }
+  
   //persist new object
   var entryEntry = entryLibrary.create(tmpEntry);
 
-  //link currentEntry to entryEntry
-  currentEntry.link("Entry", entryEntry); 
+  //link entry to entryEntry
+  entry.link("Entry", entryEntry); 
   
   //return entryEntry
   return entryEntry 
