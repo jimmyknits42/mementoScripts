@@ -529,7 +529,7 @@ function getFormattedTimeWithUncertaintyFromPartsString(time, timeUnc, hour, hou
  *
  * @returns {string}
  */ 
-function getFormattedDateTimeFromPartsTring(date, time, year, month, day, hour, minute) {
+function getFormattedDateTimeFromPartString(date, time, year, month, day, hour, minute) {
   //initialize return value
   var ret = "";
 
