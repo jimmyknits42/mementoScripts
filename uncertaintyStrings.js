@@ -155,7 +155,7 @@ function getStringWithUncertaintyString(str, uncertainty) {
   //if str is not empty
   if (str != "") {
     //set return value to str + uncertainty string
-    ret = string + getNumericUncertaintyString(uncertainty);
+    ret = str + getNumericUncertaintyString(uncertainty);
   }
 
   //return
