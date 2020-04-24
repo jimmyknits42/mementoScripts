@@ -84,6 +84,7 @@ function getFeelingSubstitutionReasonUncertaintyString(uncertainty) {
 /**
  * getUncertaintyStringSubset
  * Returns a string that is the concatenation of any values within valids also present in uncertainty
+ * if uncertainty is empty, then empty string is returned
  *
  * @param {Array} uncertainty - the array of uncertainty values
  * @param {Array} valids - the array of valid values to be concatenated if found
@@ -93,9 +94,11 @@ function getFeelingSubstitutionReasonUncertaintyString(uncertainty) {
 function getUncertaintyStringSubset(uncertainty, valids) {
   var str = "";
   
-  for (var i = 0; i < valids.length; i++) {
-    if (uncertainty.indexOf(valids[i]) > -1) {
-      str += valids[i];
+  if (uncertainty != null && uncertainty != undefined && uncertainty.length > 0) {
+    for (var i = 0; i < valids.length; i++) {
+      if (uncertainty.indexOf(valids[i]) > -1) {
+        str += valids[i];
+      }
     }
   }
   
