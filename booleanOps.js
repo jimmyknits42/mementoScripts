@@ -102,3 +102,15 @@ function passesBoolCondition(bools, operator) {
     }
   }
 }
+
+/**
+ * isnotNullNorUndefined
+ * Returns True if the parameter is null 
+ *
+ * @param {object} x - item to check
+ *
+ * @returns {boolean}
+ */
+function isnotNullNorUndefined(x) {
+  return (x != null && x != undefined)
+}
