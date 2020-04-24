@@ -524,20 +524,22 @@ function getFormattedTimeWithUncertaintyFromPartsString(time, timeUnc, hour, hou
  * @param {number} year - 4 digit number representing the year
  * @param {number} month - number representing the month (1 - 12)
  * @param {number} day - number representing the day (1 - 31)
+ * @param {boolean} includeTime - true = include a time stringin the output, false = do not
+ * @param {date} time - specific time value to be formatted and returned
  * @param {number} hour - number value representing the hour (0 - 23)
  * @param {number} minute - number value representing the minute (0 - 59)
  *
  * @returns {string}
  */ 
-function getFormattedDateTimeFromPartsString(date, time, year, month, day, hour, minute) {
+function getFormattedDateTimeFromPartString(date, year, month, day, includeTime, time, hour, minute) {
   //initialize return value
   var ret = "";
 
   //set return value to formatted date string
   ret = getFormattedDateFromPartsString(date, year, month, day);
 
-  //if return value is not empty
-  if (ret != "") {
+  //if return value is not empty and instructed to include time string
+  if (ret != "" && includeTime) {
     ret += " " + getFormattedTimeFromPartsString(time, hour, minute);
   }
 
@@ -563,6 +565,7 @@ function getFormattedDateTimeFromPartsString(date, time, year, month, day, hour,
  * @param {Array} monthUnc - array of strings corresponding to the uncertainty of the month parameter
  * @param {number} day - number representing the day (1 - 31)
  * @param {Array} dayUnc - array of strings corresponding to the uncertainty of the day parameter
+ * @param {boolean} includeTime - true = include a time string in the output, false = do not
  * @param {date} time - specific time value to be formatted and returned
  * @param {Array} timeUnc - array of strings corresponding to the uncertainty of the time parameter
  * @param {number} hour - number value representing the hour (0 - 23)
@@ -577,6 +580,7 @@ function getFormattedDateTimeWithUncertaintiesFromPartsString(
   year, yearUnc, 
   month, monthUnc, 
   day, dayUnc, 
+  includeTime, 
   time, timeUnc,
   hour, hourUnc,
   minute, minuteUnc,
@@ -588,7 +592,10 @@ function getFormattedDateTimeWithUncertaintiesFromPartsString(
   //get formatted date string
   var dateString = getFormattedDateWithUncertaintyFromPartsString(date, dateUnc, year, yearUnc, month, monthUnc, day, dayUnc);
   //get formatted time string
-  var timeString = getFormattedTimeWithUncertaintyFromPartsString(time, timeUnc, hour, hourUnc, minute, minuteUnc);
+  var timeString = "";
+  if (includeTime) {
+    timeString = getFormattedTimeWithUncertaintyFromPartsString(time, timeUnc, hour, hourUnc, minute, minuteUnc);
+  }
   //if both date and time string are not empty
   if (dateString != ""  && timeString != "") {
     //set return value to date + time string with space separator
