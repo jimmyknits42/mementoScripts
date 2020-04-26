@@ -450,6 +450,8 @@ function getFormattedTimeFromPartsString(time, hour, minute) {
     //set return value to hour : mm
     ret = getLeftPaddedNumberString(hour, "00", true) + ":" + getLeftPaddedNumberString(minute, "00", true);
   }
+  
+  return ret
 }
 
 /**
