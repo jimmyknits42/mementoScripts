@@ -2,6 +2,21 @@
 const FORMAT_DATE = "YYYY-MM-DD";
 const FORMAT_DATETIME = "YYYY-MM-DD HH:mm";
 const FORMAT_TIME = "HH:mm";
+const monthsWith30Days = [4, 6, 9, 11];
+const monthsWith31Days = [1, 3, 5, 7, 8, 10, 12];
+
+/**
+ * isLeapYear
+ * Returns True if the year parameter is a leap year
+ * Returns False if it is not
+ *
+ * @param {number} year - year to check if it's leap
+ *
+ * @returns {boolean}
+ */
+function isLeapYear(year) {
+  return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
+}
 
 /** 
  * getDurationString
@@ -351,6 +366,91 @@ function getFormattedTimeWithUncertaintyString(time, uncertainty) {
   //return
   return ret
  }
+
+/**
+ * getFormattedDateForEndFromPartsString
+ * Returns a string in the format
+ *   YYYY-MM-DD
+ * If the date parameter is provided it is used.
+ * Otherwise, the output string is constructed from the other parameters.
+ * If a month is not provided "12" is used.
+ * If a day is not provided, the last day of the month parameter is used.
+ * Respects leap years, so day will be "29" on a leap year.
+ *
+ * @param {date} date - specific date to format
+ * @param {number} year - year value to format
+ * @param {number} month - month value to format
+ * @param {number} day - day value to format
+ * 
+ * @returns {string}
+ */
+function getFormattedDateForEndFromPartsString(date, year, month, day) {
+  //initialze return
+  var ret = "";
+
+  //if date is populated
+  if (date != null && date != undefined) {
+    //set return value to the formatted date string
+    ret = getFormattedDateString(date);
+  }
+  //otherwise, build date from parts
+  else {
+    //if year is populated
+    if (year > 0) {
+      //set return value to year + hyphen
+      ret = year + "-";
+
+      //if month is populated
+      if (month > 0) {
+        //append return value with left-padded month value + hyphen
+        ret += getLeftPaddedNumberString(month, "00", false) + "-";
+      }
+      //otherwise
+      else {
+        //append return value with December + hyphen
+        ret += "12-"
+        month = 12;
+      }
+
+      //if day is populated
+      if (day > 0) {
+        //append return value with left-padded day value
+        ret += getLeftPaddedNumberString(day, "00", false);
+      }
+      //otherise
+      else {
+        //if monthPart is a month with 30 days
+        if (monthsWith30Days.includes(month)) {
+          //appeand return value with 30
+          ret += "30";
+        }
+        //if monthPart is a month with 31 days
+        else if (monthsWith31Days.includes(month)) {
+          //append return value with 31
+          ret += "31";
+        }
+        //if monthPart is February
+        else if (month == 2) {
+          //if it's a leap year
+          if (isLeapYear(year)) {
+            //append return value with 29
+            ret += "29";
+          }
+          //otherwise
+          else {
+            //append return value with 28
+            ret += "28";
+          }
+        }
+      }
+    }  
+  }
+  //return
+  return ret
+ }
+
+
+
 
 /**
  * getFormattedDateWithUncertaintyFromPartsString
