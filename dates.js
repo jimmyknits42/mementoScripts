@@ -420,12 +420,12 @@ function getFormattedDateForEndFromPartsString(date, year, month, day) {
       //otherise
       else {
         //if monthPart is a month with 30 days
-        if (monthsWith30Days.includes(month)) {
+        if (monthsWith30Days.indexOf(month) != -1) {
           //appeand return value with 30
           ret += "30";
         }
         //if monthPart is a month with 31 days
-        else if (monthsWith31Days.includes(month)) {
+        else if (monthsWith31Days.indexOf(month) != -1) {
           //append return value with 31
           ret += "31";
         }
@@ -448,9 +448,6 @@ function getFormattedDateForEndFromPartsString(date, year, month, day) {
   //return
   return ret
  }
-
-
-
 
 /**
  * getFormattedDateWithUncertaintyFromPartsString
