@@ -481,10 +481,12 @@ function getFormattedDateWithUncertaintyFromPartsString(date, dateUnc, year, yea
     //if year is populated
     if (year > 0) {
       //set return value to year + uncertainty
-      //ret = getFormattedNumberWithUncertaintyString(year, yearUnc);
-      //ret = getLeftPaddedNumberWithUncertaintyString(year, "", yearUnc);
-      //ret = getLeftPaddedNumberWithUncertaintyString(year, "", false, yearUnc);
       ret = getStringWithUncertaintyString(year.toString(), yearUnc);
+    }
+    //if year is not populated
+    else {
+      //set return value to unknown year value
+      ret = "????";
     }
 
     //MONTH
@@ -496,8 +498,6 @@ function getFormattedDateWithUncertaintyFromPartsString(date, dateUnc, year, yea
         ret += "-";
       }
       //append formatted month + uncertainty to return value
-      //ret += getFormatted2DigitNumberWithUncertaintyString(month, monthUnc);
-      //ret += getLeftPaddedNumberWithUncertaintyString(month, "00", monthUnc);
       ret += getLeftPaddedNumberWithUncertaintyString(month, "00", false, monthUnc)
     }
 
@@ -510,7 +510,6 @@ function getFormattedDateWithUncertaintyFromPartsString(date, dateUnc, year, yea
         ret += "-";
       }
       //append formatted day + uncertainty to return value
-      //ret += getFormatted2DigitNumberWithUncertaintyString(day, dayUnc);
       ret += getLeftPaddedNumberWithUncertaintyString(day, "00", false, dayUnc)
     }
   }
