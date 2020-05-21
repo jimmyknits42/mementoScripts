@@ -36,7 +36,7 @@ function getDisplayStartEndFromDurations(durations) {
     //Get minEntry 
     var minEntry = getMinimalEntry(durations, "Practical Start DateTime");
     //if minEntry is not null 
-    if (minEntry != null) {
+    if (minEntry !== null) {
       //Set start to display Start DateTime 
       start = minEntry.field("Display Start DateTime");
     } 
@@ -46,13 +46,13 @@ function getDisplayStartEndFromDurations(durations) {
     //Get maxEntry 
     var maxEntry = getMaximalEntry(durations, "Practical End DateTime");
     //if maxEntry is not null 
-    if (maxEntry != null) {
+    if (maxEntry !== null) {
       //Set end to display End DateTime 
       end = maxEntry.field("Display End DateTime");
     } 
 
     //if start and end are both not empty 
-    if (start != "" && end != "") {
+    if (start !== "" && end !== "") {
       //Set description to start - end
       ret = start + " - " + end;
     } 
@@ -62,7 +62,7 @@ function getDisplayStartEndFromDurations(durations) {
   }
 
   //return 
-  return ret
+  return ret;
 }
 
 
@@ -137,7 +137,7 @@ function setStartAndEndMoments(e) {
     //get maxEntry
     var maxEntry = getMaximalEntry(durs, "Practical End DateTime");
     //if maxEntry is not null
-    if (isnotNullNorUndefined(maxEntry) {
+    if (isnotNullNorUndefined(maxEntry)) {
       //get end moment
       var end = moment(maxEntry.field("Practical End DateTime")).valueOf();
       //set end moment
