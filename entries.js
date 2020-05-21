@@ -1,4 +1,9 @@
 /**
+ * REQUIRED OTHER LIBRARIES
+ *   booleanOps.js
+ */
+
+/**
  * getMaximalEntry
  * Returns the singular entry that has the highest value in the specified field.
  * If the entries parameter is empty, null is returned.
@@ -65,4 +70,26 @@ function getMinimalEntry(entries, fieldName) {
 
   //return minEntry
   return minEntry
+}
+
+/**
+ * getFirstEntryOrNull
+ * Returns the first entry in the entries parameter
+ * If the entries parameter is empty, null is returned
+ *
+ * @param {Array} entries - list of entries to return first entry from
+ *
+ * @returns {Entry}
+ */
+function getFirstEntryOrNull(entries) {
+  //initialize
+  var ret = null;
+
+  //if the entries parameter is not empty
+  if (isNotNullNorUndefined(entries) && entries.length > 0) {
+    ret = entries[0];
+  }
+
+  //return
+  return ret
 }
