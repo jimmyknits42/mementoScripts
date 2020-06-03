@@ -35,7 +35,7 @@ function createSourceEntry(e, fieldName) {
   //persist Source entry
   var sourceEntry = sourceLib.create(tmpSource);
   //link entry paramter to Source entry
-  sourceEntry.link(fieldName, sourceEntry);
+  sourceEntry.link(fieldName, e);
   //return persisted Source entry
   return sourceEntry;
 }
