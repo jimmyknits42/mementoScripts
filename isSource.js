@@ -26,12 +26,12 @@ function createSourceEntry(e, fieldName) {
   //construct temp Source entry 
   var tmpSource = new Object();
   //populate details
-  tmpDetails["Timestamp"] = createMoment;
-  tmpDetails["Location"] = e.field("Location");
-  tmpDetails["EntryBeganMoment"] = createMoment;
-  tmpDetails["EntrySavedMoment"] = createMoment;
-  tmpDetails["EntryLastUpdatedMoment"] = createMoment;
-  tmpDetails["Test"] = e.field("Test");
+  tmpSource["Timestamp"] = createMoment;
+  tmpSource["Location"] = e.field("Location");
+  tmpSource["EntryBeganMoment"] = createMoment;
+  tmpSource["EntrySavedMoment"] = createMoment;
+  tmpSource["EntryLastUpdatedMoment"] = createMoment;
+  tmpSource["Test"] = e.field("Test");
   //persist Source entry
   var sourceEntry = sourceLib.create(tmpSource);
   //link entry paramter to Source entry
