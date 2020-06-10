@@ -24,7 +24,7 @@
  *
  * @returns {entry}
  */
- function getStatusForDate(statuses, asOfDate, verbose = false) {
+ function getStatusForDate(statuses, asOfDate, verbose) {
   //if verbose, show function call
   if (verbose) {message("getStatusForDate(" + statuses.length  + "statuses, " + asOfDate + ")");}
 
@@ -74,14 +74,14 @@
  * Returns the singular Status entry that is effective as of the current moemnt
  * null is returned if ther is no Status effective as of the date paramter
  */
-function getCurrentStatus(statuses, verbose = false) {
+function getCurrentStatus(statuses, verbose) {
   return getStatusForDate(statuses, moment(), verbose);
 }
 
 /**
  * getStatusCapitalFormForDate
  */
- function getStatusCapitalFormForDate(statuses, asOfDate, verbose = false) {
+ function getStatusCapitalFormForDate(statuses, asOfDate, verbose) {
   var status = getStatusForDate(statuses, asOfDate, verbose);
 
   if (isnotNNU(status)) {
@@ -95,6 +95,6 @@ function getCurrentStatus(statuses, verbose = false) {
 /**
  * getCurrentStatusCapitalForm
  */
-function getCurrentStatusCapitalForm(statuses, verbose = false) {
+function getCurrentStatusCapitalForm(statuses, verbose) {
   return getStatusCapitalFormForDate(statuses, moment(), verbose);
 }
