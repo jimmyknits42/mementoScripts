@@ -26,7 +26,7 @@
  */
  function getStatusForDate(statuses, asOfDate, verbose) {
   //if verbose, show function call
-  if (verbose) {message("getStatusForDate(" + statuses.length  + "statuses, " + asOfDate + ")");}
+  //if (verbose) {message("getStatusForDate(" + statuses.length  + "statuses, " + asOfDate + ")");}
 
   //initialize
   var ret = null;
@@ -42,7 +42,7 @@
     }
   }
   //if verbose, show the number of filtered entries
-  if (verbose) {message("number of statuses effective before asOfDate = " + filteredStatuses.length);}
+  //if (verbose) {message("number of statuses effective before asOfDate = " + filteredStatuses.length);}
 
   //get the one with the most recent Practical As Of DateTime
   var status = null;
@@ -52,7 +52,7 @@
     status = getMaximalEntry(filteredStatuses, "Practical As Of DateTime");
   }
   //if verbose, indicate if there was one found
-  if (verbose) {message("effective status found = " + isnotNNU(status));}
+  //if (verbose) {message("effective status found = " + isnotNNU(status));}
 
   //if an effective status was found
   if (isnotNNU(status)) {
@@ -62,7 +62,7 @@
     //set return value to the status entry
     ret = s;
     //if verbose, show the displayID of the effective status
-    if (verbose) {message("effective status = " + getDisplayID(ret));}
+    //if (verbose) {message("effective status = " + getDisplayID(ret));}
   }
 
   //return
