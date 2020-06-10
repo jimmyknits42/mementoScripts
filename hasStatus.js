@@ -24,10 +24,7 @@
  *
  * @returns {entry}
  */
- function getStatusForDate(statuses, asOfDate, verbose) {
-  //if verbose, show function call
-  //if (verbose) {message("getStatusForDate(" + statuses.length  + "statuses, " + asOfDate + ")");}
-
+ function getStatusForDate(statuses, asOfDate) {
   //initialize
   var ret = null;
 
@@ -41,9 +38,6 @@
       filteredStatuses.push(statuses[i]);
     }
   }
-  //if verbose, show the number of filtered entries
-  //if (verbose) {message("number of statuses effective before asOfDate = " + filteredStatuses.length);}
-
   //get the one with the most recent Practical As Of DateTime
   var status = null;
   //if the filtered list is not empty
@@ -51,8 +45,6 @@
     //get entry with the largest Practical As Of DateTime
     status = getMaximalEntry(filteredStatuses, "Practical As Of DateTime");
   }
-  //if verbose, indicate if there was one found
-  //if (verbose) {message("effective status found = " + isnotNNU(status));}
 
   //if an effective status was found
   if (isnotNNU(status)) {
@@ -61,8 +53,6 @@
     if (s.length > 0) {s = s[0];}
     //set return value to the status entry
     ret = s;
-    //if verbose, show the displayID of the effective status
-    //if (verbose) {message("effective status = " + getDisplayID(ret));}
   }
 
   //return
@@ -74,15 +64,15 @@
  * Returns the singular Status entry that is effective as of the current moemnt
  * null is returned if ther is no Status effective as of the date paramter
  */
-function getCurrentStatus(statuses, verbose) {
-  return getStatusForDate(statuses, moment(), verbose);
+function getCurrentStatus(statuses) {
+  return getStatusForDate(statuses, moment());
 }
 
 /**
  * getStatusCapitalFormForDate
  */
- function getStatusCapitalFormForDate(statuses, asOfDate, verbose) {
-  var status = getStatusForDate(statuses, asOfDate, verbose);
+ function getStatusCapitalFormForDate(statuses, asOfDate) {
+  var status = getStatusForDate(statuses, asOfDate);
 
   if (isnotNNU(status)) {
     return getFieldValue(status, "CapitalForm", "");
@@ -95,6 +85,6 @@ function getCurrentStatus(statuses, verbose) {
 /**
  * getCurrentStatusCapitalForm
  */
-function getCurrentStatusCapitalForm(statuses, verbose) {
-  return getStatusCapitalFormForDate(statuses, moment(), verbose);
+function getCurrentStatusCapitalForm(statuses) {
+  return getStatusCapitalFormForDate(statuses, moment());
 }
