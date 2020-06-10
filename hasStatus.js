@@ -75,7 +75,7 @@ function getCurrentStatus(statuses) {
   var status = getStatusForDate(statuses, asOfDate);
 
   if (isnotNNU(status)) {
-    return getFieldValue(status, "CapitalForm", "");
+    return getFieldValue([status], "CapitalForm", "");
   }
   else {
     return "";
