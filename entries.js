@@ -86,7 +86,7 @@ function getFirstEntryOrNull(entries) {
   var ret = null;
 
   //if the entries parameter is not empty
-  if (isNotNullNorUndefined(entries) && entries.length > 0) {
+  if (isnotNullNorUndefined(entries) && entries.length > 0) {
     ret = entries[0];
   }
 
